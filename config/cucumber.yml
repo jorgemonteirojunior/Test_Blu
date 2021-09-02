@@ -1,0 +1,28 @@
+# command line
+default: -p pretty -p html -p json -p chrome -p producao 
+ci: -p progress -p html -p json -p chrome_headless -p producao --retry 1
+
+# report type
+html: --format html --out=logs/report.html
+json: --format json --out=logs/report.json
+
+# log style
+pretty: --format pretty
+progress: --format progress
+
+# browsers
+firefox: BROWSER=firefox
+chrome: BROWSER=chrome
+chrome_headless: BROWSER=chrome-headless
+
+homolog: TEST_ENV=HML
+producao: TEST_ENV=PROD
+
+HML:
+  :url: https://todomvc-socketstream.herokuapp.com/#/all
+  
+PROD: 
+  :url: https://todomvc-socketstream.herokuapp.com/#/all
+
+
+  
